@@ -151,7 +151,7 @@ export default function AccordionStep({
     <div
       className={`flex w-full flex-col  rounded-[10px] ${isExpanded ? "bg-[rgba(237,244,255,1)]" : ""}`}
     >
-      <div className="flex items-center px-[15px] pb-[10px] md:py-0 md:pt-[13px] md:pb-[5px]">
+      <div className="flex items-center px-[15px] pb-[10px] tab:py-0 tab:pt-[13px] tab:pb-[5px]">
         <span className="text-[0.75rem] font-['Gilroy-Medium',sans-serif] leading-3 text-[rgba(72,72,72,1)] tracking-[1.6px] uppercase">
           Step {stepNum} of {total}
         </span>
@@ -177,7 +177,7 @@ export default function AccordionStep({
             className="flex cursor-pointer items-center gap-1 bg-transparent border-none"
           >
             <span
-              className={`text-[0.875rem] font-['Gilroy-Medium',sans-serif] text-[rgba(78,47,210,1)] ${isExpanded ? "" : "md:hidden"}`}
+              className={`text-[0.875rem] font-['Gilroy-Medium',sans-serif] text-[rgba(78,47,210,1)] ${isExpanded ? "" : "tab:hidden"}`}
             >
               {selectedCount} selected
             </span>
@@ -194,7 +194,7 @@ export default function AccordionStep({
 
         {isExpanded && (
           <div className="flex flex-col justify-center gap-[15px]">
-            <div className="mt-[15px] flex flex-wrap justify-center gap-[15px]">
+            <div className="mt-[15px] flex flex-wrap justify-center gap-[15px] tab:flex-nowrap desktop:flex-wrap">
               {children}
             </div>
             {stepNum < total && onNext && nextLabel && (

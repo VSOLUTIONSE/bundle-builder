@@ -2,35 +2,35 @@
 
 @font-face {
   font-family: 'Gilroy-Bold';
-  src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  src: url('/fonts/gilroy/Gilroy-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilroy-SemiBold';
-  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  src: url('/fonts/gilroy/Gilroy-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilroy-Medium';
-  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  src: url('/fonts/gilroy/Gilroy-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilroy-Regular';
-  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  src: url('/fonts/gilroy/Gilroy-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilroy-RegularItalic';
-  src: url('/fonts/Gilroy-RegularItalic.woff2') format('woff2');
+  src: url('/fonts/gilroy/Gilroy-RegularItalic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
@@ -40,6 +40,8 @@
   --color-foreground: #171717;
   --font-sans: 'Gilroy-Medium', 'Gilroy', system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
+  --breakpoint-tab: 75.8125rem;
+  --breakpoint-desktop: 90rem;
 }
 
 body {

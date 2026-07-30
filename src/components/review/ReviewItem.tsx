@@ -28,14 +28,15 @@ export default function ReviewItem({ product }: ReviewItemProps) {
         <span className="flex-1 font-['Gilroy-Medium',sans-serif] text-[0.875rem] leading-4 text-[rgba(11,13,16,1)] tracking-[0.07px]">
           {product.name}
         </span>
-        {!product.free && (
-          <QuantityStepper
-            value={qty}
-            onAdd={() => updateQty(product.id, 1)}
-            onRemove={() => updateQty(product.id, -1)}
-            size="sm"
-          />
-        )}
+        <QuantityStepper
+          value={qty}
+          onAdd={() => updateQty(product.id, 1)}
+          onRemove={() => updateQty(product.id, -1)}
+          size="sm"
+          variant="review"
+          disableMinus={qty <= product.minQty}
+          disablePlus={qty <= product.minQty}
+        />
       </div>
       <div className="flex flex-col items-end justify-center flex-shrink-0">
         {product.free ? (
