@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { ProductData } from "@/context/BuilderContext";
 import { useBuilder } from "@/context/BuilderContext";
 import Badge from "@/components/ui/Badge";
@@ -7,28 +8,40 @@ import VariantSelector from "@/components/ui/VariantSelector";
 import QuantityStepper from "@/components/ui/QuantityStepper";
 
 export default function ProductCard({ product }: { product: ProductData }) {
-  const { quantities, updateQty, colors, setColor } = useBuilder();
-  const qty = quantities[product.id] ?? 0;
+  const { quantities, updateQty, getProductQty, colors, setColor } =
+    useBuilder();
   const selectedColor = colors[product.id] ?? product.variants[0]?.name ?? "";
+  const hasVariants = product.variants.length > 0;
+
+  const variantQtys = hasVariants
+    ? (quantities[product.id] as Record<string, number> | undefined)
+    : undefined;
+  const qty = hasVariants
+    ? (variantQtys?.[selectedColor] ?? 0)
+    : ((quantities[product.id] as number) ?? 0);
+  const totalQty = getProductQty(product.id);
 
   return (
     <div
-      className={`flex w-full flex-row tab:flex-col desktop:flex-row items-center gap-[19px] overflow-hidden rounded-[10px] border-2 bg-white px-[11px] py-[11px] tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)] desktop:flex-none ${
-        qty > 0
-          ? "border-[rgba(78,47,210,0.7)]"
-          : "border-[rgba(78,47,210,0.2)]"
+      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center gap-[19px] overflow-hidden rounded-[10px]  bg-white px-[11px] py-[11px] tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)] desktop:flex-none ${
+        totalQty > 0 ? "border-2 border-[rgba(78,47,210,0.7)]" : "border-none"
       }`}
     >
-      <div className="relative h-[137px] w-[101px] flex-shrink-0 overflow-hidden rounded-[5px]">
-        <img
+      <div className="h-[137px] w-[101px] flex-shrink-0 overflow-hidden rounded-[5px]">
+        <Image
           src={product.image}
           alt={product.name}
+          width={101}
+          height={137}
+          unoptimized
           className="h-full w-full object-cover"
         />
-        {product.badge && (
-          <Badge className="absolute left-0 top-0">{product.badge}</Badge>
-        )}
       </div>
+      {product.badge && (
+        <div className="absolute left-[11px] top-[11px]">
+          <Badge>{product.badge}</Badge>
+        </div>
+      )}
 
       <div className="flex flex-1 flex-col gap-[10px]">
         <div className="flex flex-col gap-2">
@@ -43,7 +56,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
           </p>
         </div>
 
-        {product.variants.length > 0 && (
+        {hasVariants && (
           <VariantSelector
             variants={product.variants}
             selected={selectedColor}
@@ -54,10 +67,14 @@ export default function ProductCard({ product }: { product: ProductData }) {
         <div className="flex items-end gap-[10px]">
           <QuantityStepper
             value={qty}
-            onAdd={() => updateQty(product.id, 1)}
-            onRemove={() => updateQty(product.id, -1)}
+            onAdd={() =>
+              updateQty(product.id, 1, hasVariants ? selectedColor : undefined)
+            }
+            onRemove={() =>
+              updateQty(product.id, -1, hasVariants ? selectedColor : undefined)
+            }
             disableMinus={
-              qty === 0 || (product.minQty > 0 && qty <= product.minQty)
+              qty === 0 || (product.minQty > 0 && totalQty <= product.minQty)
             }
             disablePlus={product.minQty > 0 && qty <= product.minQty}
           />

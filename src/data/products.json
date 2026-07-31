@@ -5,6 +5,7 @@
       "title": "Choose your cameras",
       "stepLabel": "Step 1 of 4",
       "iconType": "camera",
+      "icon": "/images/icons/step-1-icon.svg",
       "category": "Cameras",
       "nextLabel": "Next: Choose your plan"
     },
@@ -13,6 +14,7 @@
       "title": "Choose your plan",
       "stepLabel": "Step 2 of 4",
       "iconType": "plan",
+      "icon": "/images/icons/step-2-icon.svg",
       "category": "Plan",
       "nextLabel": "Next: Choose your sensors"
     },
@@ -21,6 +23,7 @@
       "title": "Choose your sensors",
       "stepLabel": "Step 3 of 4",
       "iconType": "sensors",
+      "icon": "/images/icons/step-3-icon.svg",
       "category": "Sensors",
       "nextLabel": "Next: Add extra protection"
     },
@@ -29,6 +32,7 @@
       "title": "Add extra protection",
       "stepLabel": "Step 4 of 4",
       "iconType": "protection",
+      "icon": "/images/icons/step-4-icon.svg",
       "category": "Accessories",
       "nextLabel": "Review your system"
     }
@@ -42,16 +46,16 @@
       "stepId": 1,
       "originalPrice": 35.98,
       "currentPrice": 27.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/085849e5-f1ea-41d5-8fdf-0e664b5207e2.png",
+      "image": "/images/products/Wyze_Cam_V4-base.svg",
       "badge": "Save 22%",
       "variants": [
-        { "name": "White", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/350f9cb4-7206-4d4e-b3a1-7b24c5a1dc46.png" },
-        { "name": "Grey", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/948330b2-eaf4-41b4-a022-585329a71946.png" },
-        { "name": "Black", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/16ab719e-55bf-454a-a045-74381c885acd.png" }
+        { "name": "White", "image": "/images/variants/Wyze Cam v4-white.svg" },
+        { "name": "Grey", "image": "/images/variants/Wyze Cam v4 -grey.svg" },
+        { "name": "Black", "image": "/images/variants/Wyze Cam v4 - black.svg" }
       ],
       "initialQty": 1,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/085849e5-f1ea-41d5-8fdf-0e664b5207e2.png"
+      "reviewThumb": "/images/products/Wyze_Cam_V4-base.svg"
     },
     {
       "id": "pan-v3",
@@ -61,15 +65,15 @@
       "stepId": 1,
       "originalPrice": 39.98,
       "currentPrice": 34.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/544bc953-9881-46ea-aa23-77ef3947e0bb.png",
+      "image": "/images/products/Wyze Cam Pan v3-base.svg",
       "badge": "Save 12%",
       "variants": [
-        { "name": "White", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/5a7aa53e-9ecf-4873-9d3c-5155fd7698b8.png" },
-        { "name": "Black", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/b672f34d-d1d3-4bfc-8092-9457b0028cfc.png" }
+        { "name": "White", "image": "/images/variants/Wyze Cam Pan v3-white.svg" },
+        { "name": "Black", "image": "/images/variants/Wyze Cam Pan v3-black.svg" }
       ],
       "initialQty": 2,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/544bc953-9881-46ea-aa23-77ef3947e0bb.png"
+      "reviewThumb": "/images/products/Wyze Cam Pan v3-base.svg"
     },
     {
       "id": "floodlight",
@@ -79,15 +83,15 @@
       "stepId": 1,
       "originalPrice": 89.98,
       "currentPrice": 69.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/f41eec3f-0104-4219-bae4-f542cf8d1f96.png",
+      "image": "/images/products/Wyze Cam Floodlight v2-base.svg",
       "badge": "Save 22%",
       "variants": [
-        { "name": "White", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/88ad9247-9096-4886-aec7-72edb2e982fa.png" },
-        { "name": "Black", "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/79bdba74-0b56-40bc-a31d-b8393350cb75.png" }
+        { "name": "White", "image": "/images/variants/Wyze Cam Floodlight v2-white.svg" },
+        { "name": "Black", "image": "/images/variants/Wyze Cam Floodlight v2 - black.svg" }
       ],
       "initialQty": 0,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/f41eec3f-0104-4219-bae4-f542cf8d1f96.png"
+      "reviewThumb": "/images/products/Wyze Cam Floodlight v2-base.svg"
     },
     {
       "id": "doorbell",
@@ -97,12 +101,12 @@
       "stepId": 1,
       "originalPrice": 69.98,
       "currentPrice": 69.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2953b831-9486-48d2-9a5a-c28643e9f624.png",
+      "image": "/images/products/Wyze Duo Cam Doorbell-base2.svg",
       "badge": null,
       "variants": [],
       "initialQty": 0,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2953b831-9486-48d2-9a5a-c28643e9f624.png"
+      "reviewThumb": "/images/products/Wyze_Doorbell_base.png"
     },
     {
       "id": "battery-cam",
@@ -112,21 +116,15 @@
       "stepId": 1,
       "originalPrice": 89.98,
       "currentPrice": 89.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2953b831-9486-48d2-9a5a-c28643e9f624.png",
+      "image": "/images/products/Wyze Battery Cam Pro-base.svg",
       "badge": null,
       "variants": [
-        {
-          "name": "White",
-          "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/88ad9247-9096-4886-aec7-72edb2e982fa.png"
-        },
-        {
-          "name": "Black",
-          "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/16ab719e-55bf-454a-a045-74381c885acd.png"
-        }
+        { "name": "White", "image": "/images/variants/Battery Cam Pro-white.svg" },
+        { "name": "Black", "image": "/images/variants/Battery Cam Pro-black.svg" }
       ],
       "initialQty": 0,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2953b831-9486-48d2-9a5a-c28643e9f624.png"
+      "reviewThumb": "/images/products/Wyze Battery Cam Pro-base.svg"
     },
     {
       "id": "motion-sensor",
@@ -136,12 +134,12 @@
       "stepId": 3,
       "originalPrice": 29.99,
       "currentPrice": 29.99,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/378f0ee4-8995-4be4-8213-107e21205592.png",
+      "image": "/images/products/Wyze Sense Motion Sensor-no-var.svg",
       "badge": null,
       "variants": [],
       "initialQty": 2,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/378f0ee4-8995-4be4-8213-107e21205592.png"
+      "reviewThumb": "/images/products/Wyze Sense Motion Sensor-no-var.svg"
     },
     {
       "id": "hub",
@@ -151,13 +149,13 @@
       "stepId": 3,
       "originalPrice": 29.92,
       "currentPrice": 0,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2fcfcc8c-fcf5-4d55-88eb-febaac2584b8.png",
+      "image": "/images/products/Wyze Sense Hub-no-var.svg",
       "badge": null,
       "free": true,
       "variants": [],
       "initialQty": 1,
       "minQty": 1,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/2fcfcc8c-fcf5-4d55-88eb-febaac2584b8.png"
+      "reviewThumb": "/images/products/Wyze Sense Hub-no-var.svg"
     },
     {
       "id": "sd-card",
@@ -167,12 +165,12 @@
       "stepId": 4,
       "originalPrice": 20.98,
       "currentPrice": 20.98,
-      "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/6a5e37d3-6d39-4b04-bfad-fd43c3d00415.png",
+      "image": "/images/products/Black-256GB microSD-card-no-var.svg",
       "badge": null,
       "variants": [],
       "initialQty": 2,
       "minQty": 0,
-      "reviewThumb": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/6a5e37d3-6d39-4b04-bfad-fd43c3d00415.png"
+      "reviewThumb": "/images/products/Black-256GB microSD-card-no-var.svg"
     }
   ],
   "plan": {
@@ -180,14 +178,21 @@
     "originalPrice": 12.99,
     "currentPrice": 9.99,
     "period": "mo",
-    "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/5ebfc7d0-0894-45cf-ad28-55da27390ee1.svg"
+    "image": "/images/icons/plan.svg"
   },
   "shipping": {
     "name": "Fast Shipping",
     "originalPrice": 5.99,
     "currentPrice": 0,
-    "image": "https://storage.googleapis.com/storage.magicpath.ai/user/418511835344551936/figma-assets/27140a07-edb2-419d-b42d-284112ca4094.svg",
+    "image": "/images/icons/shipping.svg",
     "free": true
+  },
+  "ui": {
+    "satisfactionBadge": {
+      "name": "Satisfaction Guaranteed Badge",
+      "image": "/images/badges/satisfaction_badge.svg",
+      "tabImage": "/images/badges/satisfaction_badge-tab.png"
+    }
   },
   "totals": {
     "originalTotal": 238.81,

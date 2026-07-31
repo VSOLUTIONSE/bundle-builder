@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import type { ReactNode } from "react";
 
 interface AccordionStepProps {
   stepNum: number;
   total: number;
   title: string;
+  icon: string;
   isExpanded: boolean;
   selectedCount: number;
   onToggle: () => void;
@@ -15,130 +17,11 @@ interface AccordionStepProps {
   isLast?: boolean;
 }
 
-function CameraIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="2"
-        y="1"
-        width="20"
-        height="20"
-        rx="4"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <circle cx="18" cy="6" r="1" fill="rgba(111,120,130,1)" />
-      <line
-        x1="8"
-        y1="22"
-        x2="8"
-        y2="23"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-      />
-      <line
-        x1="16"
-        y1="22"
-        x2="16"
-        y2="23"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-      />
-      <line
-        x1="3"
-        y1="23"
-        x2="21"
-        y2="23"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-      />
-      <circle
-        cx="12"
-        cy="11"
-        r="5"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <circle cx="12" cy="11" r="2" fill="rgba(111,120,130,1)" />
-    </svg>
-  );
-}
-
-function PlanIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 3L14.5 8.5L20.5 9.5L16 14L17 20L12 17L7 20L8 14L3.5 9.5L9.5 8.5L12 3Z"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-    </svg>
-  );
-}
-
-function SensorsIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="5"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <circle cx="12" cy="12" r="2" fill="rgba(111,120,130,1)" />
-    </svg>
-  );
-}
-
-function ProtectionIcon() {
-  return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path
-        d="M12 2L20 6V10C20 15 16 19.5 12 21C8 19.5 4 15 4 10V6L12 2Z"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-        fill="none"
-      />
-      <path
-        d="M9 12L11.5 14.5L15.5 10"
-        stroke="rgba(111,120,130,1)"
-        strokeWidth="1.5"
-      />
-    </svg>
-  );
-}
-
-const icons: Record<string, React.ReactNode> = {
-  camera: <CameraIcon />,
-  plan: <PlanIcon />,
-  sensors: <SensorsIcon />,
-  protection: <ProtectionIcon />,
-};
-
-const iconMap: Record<number, string> = {
-  1: "camera",
-  2: "plan",
-  3: "sensors",
-  4: "protection",
-};
-
 export default function AccordionStep({
   stepNum,
   total,
   title,
+  icon,
   isExpanded,
   selectedCount,
   onToggle,
@@ -166,9 +49,15 @@ export default function AccordionStep({
         >
           <div className="flex items-center gap-2">
             <div className="flex h-[30px] w-[30px] items-center justify-center">
-              {icons[iconMap[stepNum]]}
+              <Image
+                src={icon}
+                alt={title}
+                width={24}
+                height={24}
+                unoptimized
+              />
             </div>
-            <h2 className="m-0 text-[1.75rem] font-semibold text-[rgba(11,13,16,1)]">
+            <h2 className="m-0 text-[1.125rem] font-['Gilroy-SemiBold',sans-serif] leading-[100%] tab:text-[1.75rem] text-[rgba(11,13,16,1)]">
               {title}
             </h2>
           </div>
@@ -177,7 +66,7 @@ export default function AccordionStep({
             className="flex cursor-pointer items-center gap-1 bg-transparent border-none"
           >
             <span
-              className={`text-[0.875rem] font-['Gilroy-Medium',sans-serif] text-[rgba(78,47,210,1)] ${isExpanded ? "" : "tab:hidden"}`}
+              className={`text-[0.875rem] font-['Gilroy-Medium',sans-serif] leading-4 text-center tab:leading-[1.5] tab:text-left text-[rgba(78,47,210,1)] ${isExpanded ? "" : "tab:hidden"}`}
             >
               {selectedCount} selected
             </span>

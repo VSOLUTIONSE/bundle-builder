@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface Variant {
   name: string;
   image: string;
@@ -30,10 +32,13 @@ export default function VariantSelector({
                 : 'border-[rgba(204,204,204,1)] bg-white'
             }`}
           >
-            <img
+            <Image
               src={v.image}
               alt={v.name}
-              className="h-[22px] w-[22px] rounded-[5px] object-cover"
+              width={22}
+              height={22}
+              unoptimized
+              className="rounded-[5px] object-cover"
             />
             <span className="text-[0.625rem] leading-[10px] font-['Gilroy-Medium',sans-serif] text-[rgba(31,31,31,1)] tracking-[0.6px]">
               {v.name}

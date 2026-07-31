@@ -23,6 +23,7 @@ export default function BuilderPanel() {
               stepNum={step.id}
               total={steps.length}
               title={step.title}
+              icon={step.icon}
               isExpanded={isExpanded}
               selectedCount={0}
               onToggle={() => setExpandedStep(isExpanded ? 0 : step.id)}
@@ -42,6 +43,7 @@ export default function BuilderPanel() {
             stepNum={step.id}
             total={steps.length}
             title={step.title}
+            icon={step.icon}
             isExpanded={isExpanded}
             selectedCount={count}
             onToggle={() => setExpandedStep(isExpanded ? 0 : step.id)}

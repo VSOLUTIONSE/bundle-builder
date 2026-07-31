@@ -20,8 +20,9 @@ export interface ProductData {
   reviewThumb: string;
 }
 
+type VariantQtys = Record<string, number>;
 interface Quantities {
-  [key: string]: number;
+  [key: string]: number | VariantQtys;
 }
 
 interface Colors {
@@ -33,12 +34,14 @@ interface BuilderContextType {
   steps: typeof data.steps;
   plan: typeof data.plan;
   shipping: typeof data.shipping;
+  ui: typeof data.ui;
   expandedStep: number;
   setExpandedStep: (id: number) => void;
   quantities: Quantities;
-  updateQty: (id: string, delta: number) => void;
+  updateQty: (id: string, delta: number, variantName?: string) => void;
   colors: Colors;
   setColor: (id: string, color: string) => void;
+  getProductQty: (id: string) => number;
   getSelectedCount: (stepId: number) => number;
   getCategoryProducts: (category: string) => ProductData[];
   getStepProducts: (stepId: number) => ProductData[];
@@ -50,7 +53,15 @@ const BuilderContext = createContext<BuilderContextType | null>(null);
 function buildInitialQuantities(products: ProductData[]): Quantities {
   const q: Quantities = {};
   for (const p of products) {
-    q[p.id] = p.initialQty;
+    if (p.variants.length > 0) {
+      const variantQty: VariantQtys = {};
+      for (let i = 0; i < p.variants.length; i++) {
+        variantQty[p.variants[i].name] = i === 0 ? p.initialQty : 0;
+      }
+      q[p.id] = variantQty;
+    } else {
+      q[p.id] = p.initialQty;
+    }
   }
   return q;
 }
@@ -65,17 +76,34 @@ function buildInitialColors(products: ProductData[]): Colors {
   return c;
 }
 
+function getProductTotalQty(quantities: Quantities, productId: string): number {
+  const q = quantities[productId];
+  if (q === undefined) return 0;
+  if (typeof q === 'number') return q;
+  return Object.values(q).reduce((sum, v) => sum + v, 0);
+}
+
 export function BuilderProvider({ children }: { children: ReactNode }) {
   const products = data.products as ProductData[];
   const [expandedStep, setExpandedStep] = useState(1);
   const [quantities, setQuantities] = useState<Quantities>(() => buildInitialQuantities(products));
   const [colors, setColors] = useState<Colors>(() => buildInitialColors(products));
 
-  const updateQty = useCallback((id: string, delta: number) => {
+  const updateQty = useCallback((id: string, delta: number, variantName?: string) => {
     setQuantities(prev => {
       const product = products.find(p => p.id === id);
       const min = product?.minQty ?? 0;
-      return { ...prev, [id]: Math.max(min, (prev[id] ?? 0) + delta) };
+      if (variantName && product && product.variants.length > 0) {
+        const variantQtys = { ...(prev[id] as VariantQtys) };
+        const newQty = Math.max(0, (variantQtys[variantName] ?? 0) + delta);
+        const otherSum = Object.entries(variantQtys)
+          .filter(([k]) => k !== variantName)
+          .reduce((s, [, v]) => s + v, 0);
+        if (newQty + otherSum < min) return prev;
+        variantQtys[variantName] = newQty;
+        return { ...prev, [id]: variantQtys };
+      }
+      return { ...prev, [id]: Math.max(min, (prev[id] as number ?? 0) + delta) };
     });
   }, [products]);
 
@@ -83,10 +111,14 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
     setColors(prev => ({ ...prev, [id]: color }));
   }, []);
 
+  const getProductQty = useCallback((id: string) => {
+    return getProductTotalQty(quantities, id);
+  }, [quantities]);
+
   const getSelectedCount = useCallback((stepId: number) => {
     return products
       .filter(p => p.stepId === stepId)
-      .reduce((sum, p) => sum + (quantities[p.id] ?? 0), 0);
+      .reduce((sum, p) => sum + getProductTotalQty(quantities, p.id), 0);
   }, [products, quantities]);
 
   const getCategoryProducts = useCallback((category: string) => {
@@ -101,7 +133,7 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
     let current = 0;
     let original = 0;
     for (const p of products) {
-      const qty = quantities[p.id] ?? 0;
+      const qty = getProductTotalQty(quantities, p.id);
       current += qty * p.currentPrice;
       original += qty * p.originalPrice;
     }
@@ -128,12 +160,14 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
         steps: data.steps,
         plan: data.plan,
         shipping: data.shipping,
+        ui: data.ui,
         expandedStep,
         setExpandedStep,
         quantities,
         updateQty,
         colors,
         setColor,
+        getProductQty,
         getSelectedCount,
         getCategoryProducts,
         getStepProducts,
