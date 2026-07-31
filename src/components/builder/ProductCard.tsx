@@ -27,7 +27,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
         totalQty > 0 ? "border-primary-border" : "border-transparent"
       }`}
     >
-      <div className="h-[149px] mr-4.70 w-27.5 flex-shrink-0 overflow-hidden rounded-lg">
+      <div className="h-[149px] mr-[13px] w-27.5 flex-shrink-0 overflow-hidden rounded-lg">
         <Image
           src={product.image}
           alt={product.name}
