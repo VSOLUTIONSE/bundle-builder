@@ -23,11 +23,11 @@ export default function ProductCard({ product }: { product: ProductData }) {
 
   return (
     <div
-      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center gap-[19px] overflow-hidden rounded-[10px]  bg-white px-[11px] py-[11px] tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)] desktop:flex-none ${
-        totalQty > 0 ? "border-2 border-[rgba(78,47,210,0.7)]" : "border-none"
+      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center  overflow-hidden rounded-2xl  bg-white px-2.75 py-2.75 tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)]  desktop:flex-none ${
+        totalQty > 0 ? "border-2 border-primary-border" : "border-none"
       }`}
     >
-      <div className="h-[149px] w-[110px] flex-shrink-0 overflow-hidden rounded-[5px]">
+      <div className="h-[149px] mr-4.70 w-27.5 flex-shrink-0 overflow-hidden rounded-lg">
         <Image
           src={product.image}
           alt={product.name}
@@ -38,19 +38,23 @@ export default function ProductCard({ product }: { product: ProductData }) {
         />
       </div>
       {product.badge && (
-        <div className="absolute left-[11px] top-[11px]">
+        <div
+          className={`absolute left-2.75 top-2.75 ${
+            totalQty > 0 ? "desktop:top-2.25" : ""
+          }`}
+        >
           <Badge>{product.badge}</Badge>
         </div>
       )}
 
-      <div className="flex flex-1 flex-col gap-[10px]">
+      <div className="flex flex-1 flex-col gap-2.5">
         <div className="flex flex-col gap-2">
-          <h3 className="font-['Gilroy-SemiBold',sans-serif] text-[1rem] leading-4 text-[rgba(31,31,31,1)] tracking-[0.6px]">
+          <h3 className="font-semibold text-base leading-4 text-foreground-primary tracking-[0.6px]">
             {product.name}
           </h3>
-          <p className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-[15.6px] text-[rgba(31,31,31,0.75)] tracking-[0.6px]">
+          <p className="font-medium text-xs leading-[15.6px] text-foreground-soft tracking-[0.6px]">
             {product.description}{" "}
-            <span className="cursor-pointer text-[#0000EE] underline">
+            <span className="cursor-pointer text-link underline">
               Learn More
             </span>
           </p>
@@ -64,7 +68,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
           />
         )}
 
-        <div className="flex items-end gap-[10px]">
+        <div className="flex items-end gap-2.5">
           <QuantityStepper
             value={qty}
             onAdd={() =>
@@ -78,11 +82,11 @@ export default function ProductCard({ product }: { product: ProductData }) {
             }
             disablePlus={product.minQty > 0 && qty <= product.minQty}
           />
-          <div className="flex flex-1 flex-col items-end justify-center gap-[3px]">
-            <span className="font-['Gilroy-Regular',sans-serif] text-[1rem] leading-4 text-[rgba(216,57,43,1)] tracking-[0.6px] line-through">
+          <div className="flex flex-1 flex-col items-end justify-center gap-0.75">
+            <span className="font-normal text-base leading-4 text-strike tracking-[0.6px] line-through">
               ${product.originalPrice.toFixed(2)}
             </span>
-            <span className="font-['Gilroy-Regular',sans-serif] text-[1rem] leading-4 text-[rgba(87,87,87,1)] tracking-[0.6px]">
+            <span className="font-normal text-base leading-4 text-price tracking-[0.6px]">
               {product.free ? "FREE" : `$${product.currentPrice.toFixed(2)}`}
             </span>
           </div>

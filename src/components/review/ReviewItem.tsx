@@ -27,7 +27,7 @@ export default function ReviewItem({ product }: ReviewItemProps) {
   const totalCurrent = totalQty * product.currentPrice;
 
   return (
-    <div className="flex items-center gap-[16px]">
+    <div className="flex items-center gap-4">
       <div className="flex flex-1 items-center gap-3">
         <Image
           src={thumbSrc}
@@ -35,9 +35,9 @@ export default function ReviewItem({ product }: ReviewItemProps) {
           width={41}
           height={41}
           unoptimized
-          className="flex-shrink-0 rounded-[5px] bg-white object-cover"
+          className="flex-shrink-0 rounded-lg bg-white object-cover"
         />
-        <span className="flex-1 font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:tracking-[0.07px] text-[rgba(11,13,16,1)]">
+        <span className="flex-1 text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:tracking-[0.07px] text-foreground-strong">
           {product.name}
         </span>
         <QuantityStepper
@@ -56,22 +56,22 @@ export default function ReviewItem({ product }: ReviewItemProps) {
         {product.free ? (
           <>
             {product.originalPrice > 0 && (
-              <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(111,120,130,1)] line-through">
+              <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-tertiary-foreground line-through">
                 ${(totalQty * product.originalPrice).toFixed(2)}
               </span>
             )}
-            <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(78,47,210,1)]">
+            <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-primary">
               FREE
             </span>
           </>
         ) : (
           <>
             {totalOriginal > totalCurrent && (
-              <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(111,120,130,1)] line-through">
+              <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-tertiary-foreground line-through">
                 ${totalOriginal.toFixed(2)}
               </span>
             )}
-            <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(78,47,210,1)]">
+            <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-primary">
               ${totalCurrent.toFixed(2)}
             </span>
           </>

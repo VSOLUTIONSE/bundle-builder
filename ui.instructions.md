@@ -33,6 +33,3 @@ Every primitive in `components/ui` follows the same shape:
 
 See `src/components/ui/button.tsx` as the canonical example. A new primitive
 copies that shape.
-
-
-The card's quantity stepper is bound to whichever variant is currently selected. Selecting a color makes it the active variant, and the stepper shows and edits that variant's count. Example: add 2 of variant 1, then select variant 2 the stepper now reads 0 (variant 2's count), while the 2 for variant 1 remains untouched.

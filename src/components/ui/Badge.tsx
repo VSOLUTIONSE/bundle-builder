@@ -9,9 +9,9 @@ export default function Badge({
 }) {
   return (
     <div
-      className={`inline-flex items-center justify-center rounded-[10px] bg-[rgba(78,47,210,1)] px-[6px] py-[2px] ${className}`}
+      className={`inline-flex items-center justify-center rounded-2xl bg-primary px-1.5 py-0.5 ${className}`}
     >
-      <span className="text-[0.75rem] leading-[14.7px] tab:leading-[100%] text-center text-white font-['Gilroy-SemiBold',sans-serif]">
+      <span className="text-center text-xs font-semibold leading-[14.7px] text-white tab:leading-[100%]">
         {children}
       </span>
     </div>

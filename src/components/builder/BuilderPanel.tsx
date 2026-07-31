@@ -1,22 +1,30 @@
-'use client';
+"use client";
 
-import { useBuilder } from '@/context/BuilderContext';
-import AccordionStep from './AccordionStep';
-import ProductCard from './ProductCard';
+import { useBuilder } from "@/context/BuilderContext";
+import AccordionStep from "./AccordionStep";
+import ProductCard from "./ProductCard";
 
 export default function BuilderPanel() {
-  const { steps, expandedStep, setExpandedStep, getStepProducts, getSelectedCount, products } = useBuilder();
+  const {
+    steps,
+    expandedStep,
+    setExpandedStep,
+    getStepProducts,
+    getSelectedCount,
+    products,
+  } = useBuilder();
 
-  const planProducts = products.filter(p => p.category === 'Plan');
+  const planProducts = products.filter((p) => p.category === "Plan");
 
   return (
-    <div className="flex flex-col gap-[13px] tab:gap-0">
-      {steps.map(step => {
+    <div className="flex flex-col gap-3.25 tab:gap-0">
+      {steps.map((step) => {
         const isExpanded = expandedStep === step.id;
-        const stepProds = step.category === 'Plan' ? planProducts : getStepProducts(step.id);
+        const stepProds =
+          step.category === "Plan" ? planProducts : getStepProducts(step.id);
         const count = getSelectedCount(step.id);
 
-        if (step.category === 'Plan') {
+        if (step.category === "Plan") {
           return (
             <AccordionStep
               key={step.id}
@@ -27,11 +35,17 @@ export default function BuilderPanel() {
               isExpanded={isExpanded}
               selectedCount={0}
               onToggle={() => setExpandedStep(isExpanded ? 0 : step.id)}
-              onNext={step.id < steps.length ? () => setExpandedStep(step.id + 1) : undefined}
+              onNext={
+                step.id < steps.length
+                  ? () => setExpandedStep(step.id + 1)
+                  : undefined
+              }
               nextLabel={step.nextLabel}
             >
               <div className="col-span-full">
-                <p className="text-[rgba(31,31,31,0.75)]">Plan selection content here.</p>
+                <p className="text-foreground-soft">
+                  Plan selection content here.
+                </p>
               </div>
             </AccordionStep>
           );
@@ -47,11 +61,15 @@ export default function BuilderPanel() {
             isExpanded={isExpanded}
             selectedCount={count}
             onToggle={() => setExpandedStep(isExpanded ? 0 : step.id)}
-            onNext={step.id < steps.length ? () => setExpandedStep(step.id + 1) : undefined}
+            onNext={
+              step.id < steps.length
+                ? () => setExpandedStep(step.id + 1)
+                : undefined
+            }
             nextLabel={step.nextLabel}
           >
             {stepProds.length > 0 ? (
-              stepProds.map(p => <ProductCard key={p.id} product={p} />)
+              stepProds.map((p) => <ProductCard key={p.id} product={p} />)
             ) : (
               <div className="col-span-full py-8 text-center text-[rgba(111,120,130,1)]">
                 No products in this category.
@@ -63,3 +81,4 @@ export default function BuilderPanel() {
     </div>
   );
 }
+

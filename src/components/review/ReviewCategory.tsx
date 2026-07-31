@@ -15,20 +15,20 @@ export default function ReviewCategory({
   children,
   showBorder = true,
   hideLabel = false,
-  topPadding = "pt-[5px]",
+  topPadding = "pt-1.25",
 }: ReviewCategoryProps) {
   return (
     <div
       className={`flex flex-col gap-2 ${topPadding} ${
-        showBorder ? "border-b border-solid border-[rgba(206,214,222,1)]" : ""
+        showBorder ? "border-b border-solid border-border" : ""
       }`}
     >
       {!hideLabel && (
-        <span className="font-['Gilroy-Regular',sans-serif] text-[0.75rem] leading-4 text-[rgba(168,178,189,1)] tracking-[0.36px] uppercase">
+        <span className="text-xs font-normal leading-4 text-label-foreground tracking-[0.36px] uppercase">
           {name}
         </span>
       )}
-      <div className="flex flex-col pb-[10px] gap-3">{children}</div>
+      <div className="flex flex-col gap-3 pb-2.5">{children}</div>
     </div>
   );
 }
