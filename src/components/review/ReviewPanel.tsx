@@ -35,10 +35,10 @@ export default function ReviewPanel() {
               as low as {total.monthly}/mo
             </span>
             <div className="flex items-baseline gap-2">
-              <span className="font-['Gilroy-Medium',sans-serif] text-[1.125rem] leading-5 text-[rgba(111,120,130,1)] tracking-[0.045px] line-through">
+              <span className="font-['Gilroy-Medium',sans-serif] text-[1.125rem] leading-5 text-center align-middle text-[rgba(111,120,130,1)] tracking-[0.25%] line-through">
                 {total.original}
               </span>
-              <span className="font-['Gilroy-Bold',sans-serif] text-[1.5rem] leading-8 text-[rgba(78,47,210,1)] tracking-[-0.03px]">
+              <span className="font-['Gilroy-Bold',sans-serif] text-[1.5rem] leading-8 text-right align-middle text-[rgba(78,47,210,1)] tracking-[-0.13%]">
                 {total.current}
               </span>
             </div>
@@ -53,7 +53,7 @@ export default function ReviewPanel() {
             onClick={() => alert("Proceeding to checkout...")}
             className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-[4px] bg-[rgba(78,47,210,1)] px-4 py-[13px] border-none"
           >
-            <span className="flex-1 text-center font-['TT_Norms_Pro',sans-serif] text-[1.0625rem] font-bold leading-[21.8px] text-white">
+            <span className="flex-1 text-center align-middle font-['TT_Norms_Pro',sans-serif] text-[1.0625rem] font-bold leading-[100%] desktop:leading-[21.8px] text-white">
               Checkout
             </span>
           </button>
@@ -88,10 +88,10 @@ export default function ReviewPanel() {
                 as low as {total.monthly}/mo
               </span>
               <div className="flex flex-row items-baseline gap-2">
-                <span className="font-['Gilroy-Medium',sans-serif] text-[1.375rem] leading-5 text-[rgba(111,120,130,1)] line-through">
+                <span className="font-['Gilroy-Medium',sans-serif] text-[1.125rem] leading-5 text-center align-middle text-[rgba(111,120,130,1)] tracking-[0.25%] line-through">
                   {total.original}
                 </span>
-                <span className="font-['Gilroy-Bold',sans-serif] text-[1.75rem] leading-8 text-[rgba(78,47,210,1)]">
+                <span className="font-['Gilroy-Bold',sans-serif] text-[1.5rem] leading-8 text-right align-middle text-[rgba(78,47,210,1)] tracking-[-0.13%]">
                   {total.current}
                 </span>
               </div>
@@ -182,7 +182,7 @@ export default function ReviewPanel() {
               </div>
             </ReviewCategory>
 
-            <ReviewCategory name="Shipping" showBorder={false}>
+            <ReviewCategory name="Shipping" showBorder={false} hideLabel topPadding="pt-[5px]">
               <div className="flex items-center gap-[16px]">
                 <div className="flex h-[41px] w-[41px] items-center justify-center rounded-[5px] bg-white">
                   <Image

@@ -27,12 +27,12 @@ export default function ProductCard({ product }: { product: ProductData }) {
         totalQty > 0 ? "border-2 border-[rgba(78,47,210,0.7)]" : "border-none"
       }`}
     >
-      <div className="h-[137px] w-[101px] flex-shrink-0 overflow-hidden rounded-[5px]">
+      <div className="h-[149px] w-[110px] flex-shrink-0 overflow-hidden rounded-[5px]">
         <Image
           src={product.image}
           alt={product.name}
-          width={101}
-          height={137}
+          width={110}
+          height={149}
           unoptimized
           className="h-full w-full object-cover"
         />

@@ -10,7 +10,7 @@ export default function BuilderPanel() {
   const planProducts = products.filter(p => p.category === 'Plan');
 
   return (
-    <div className="flex flex-col gap-[13px]">
+    <div className="flex flex-col gap-[13px] tab:gap-0">
       {steps.map(step => {
         const isExpanded = expandedStep === step.id;
         const stepProds = step.category === 'Plan' ? planProducts : getStepProducts(step.id);

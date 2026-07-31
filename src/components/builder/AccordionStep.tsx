@@ -74,9 +74,9 @@ export default function AccordionStep({
               width="12"
               height="12"
               viewBox="0 0 12 12"
-              className={`transition-transform duration-300 ${isExpanded ? "rotate-0" : "rotate-180"}`}
+              className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : "rotate-0"}`}
             >
-              <path d="M6 3L10 7.5L2 7.5L6 3Z" fill="rgba(78,47,210,1)" />
+              <path d="M5.59318 2.56961C5.79259 2.29044 6.2075 2.29044 6.40691 2.56962L10.4353 8.20938C10.6717 8.54032 10.4351 9 10.0284 9H1.9716C1.56491 9 1.32835 8.54031 1.56473 8.20938L5.59318 2.56961Z" fill="rgba(78,47,210,1)" />
             </svg>
           </button>
         </div>

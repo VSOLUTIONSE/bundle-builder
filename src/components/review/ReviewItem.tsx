@@ -46,23 +46,32 @@ export default function ReviewItem({ product }: ReviewItemProps) {
           onRemove={() => updateQty(product.id, -1, hasVariants ? selectedColor : undefined)}
           size="sm"
           variant="review"
-          disableMinus={stepperQty === 0}
+          disableMinus={
+            stepperQty === 0 || (product.minQty > 0 && totalQty <= product.minQty)
+          }
           disablePlus={!hasVariants && totalQty <= product.minQty}
         />
       </div>
       <div className="flex flex-col items-end justify-center flex-shrink-0">
         {product.free ? (
-          <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.07px] text-[rgba(78,47,210,1)]">
-            FREE
-          </span>
+          <>
+            {product.originalPrice > 0 && (
+              <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(111,120,130,1)] line-through">
+                ${(totalQty * product.originalPrice).toFixed(2)}
+              </span>
+            )}
+            <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(78,47,210,1)]">
+              FREE
+            </span>
+          </>
         ) : (
           <>
             {totalOriginal > totalCurrent && (
-              <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:tracking-[0.07px] text-[rgba(111,120,130,1)] line-through">
+              <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(111,120,130,1)] line-through">
                 ${totalOriginal.toFixed(2)}
               </span>
             )}
-            <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.07px] text-[rgba(78,47,210,1)]">
+            <span className="font-['Gilroy-Medium',sans-serif] text-[0.75rem] leading-4 tracking-[0.5%] tab:text-[0.875rem] tab:font-['Gilroy-SemiBold',sans-serif] tab:tracking-[0.5%] text-right align-middle text-[rgba(78,47,210,1)]">
               ${totalCurrent.toFixed(2)}
             </span>
           </>
