@@ -23,8 +23,8 @@ export default function ProductCard({ product }: { product: ProductData }) {
 
   return (
     <div
-      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center  overflow-hidden rounded-2xl  bg-white px-2.75 py-2.75 tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)]  desktop:flex-none ${
-        totalQty > 0 ? "border-2 border-primary-border" : "border-none"
+      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center  overflow-hidden rounded-2xl  bg-white px-2.75 py-2.75 tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)]  desktop:flex-none border-2 ${
+        totalQty > 0 ? "border-primary-border" : "border-transparent"
       }`}
     >
       <div className="h-[149px] mr-4.70 w-27.5 flex-shrink-0 overflow-hidden rounded-lg">
@@ -38,11 +38,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
         />
       </div>
       {product.badge && (
-        <div
-          className={`absolute left-2.75 top-2.75 ${
-            totalQty > 0 ? "desktop:top-2.25" : ""
-          }`}
-        >
+        <div className="absolute left-2.75 top-2.25">
           <Badge>{product.badge}</Badge>
         </div>
       )}

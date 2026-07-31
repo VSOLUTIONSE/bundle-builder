@@ -165,9 +165,15 @@ export default function ReviewPanel() {
           <div className="flex flex-col gap-1.25">
             {groupedCategories.map((g) => (
               <ReviewCategory key={g.name} name={g.name} showBorder>
-                {g.products.map((p) => (
-                  <ReviewItem key={p.id} product={p} />
-                ))}
+                {g.products.map((p) =>
+                  p.variants.length > 0 ? (
+                    p.variants.map((v) => (
+                      <ReviewItem key={`${p.id}:${v.name}`} product={p} variant={v} />
+                    ))
+                  ) : (
+                    <ReviewItem key={p.id} product={p} />
+                  ),
+                )}
               </ReviewCategory>
             ))}
 

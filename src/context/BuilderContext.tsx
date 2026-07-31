@@ -245,9 +245,9 @@ export function BuilderProvider({ children }: { children: ReactNode }) {
   }, [quantities]);
 
   const getSelectedCount = useCallback((stepId: number) => {
-    return products
-      .filter(p => p.stepId === stepId)
-      .reduce((sum, p) => sum + getProductTotalQty(quantities, p.id), 0);
+    return products.filter(
+      p => p.stepId === stepId && getProductTotalQty(quantities, p.id) > 0,
+    ).length;
   }, [products, quantities]);
 
   const getCategoryProducts = useCallback((category: string) => {
