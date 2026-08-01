@@ -51,7 +51,11 @@ export default function ReviewItem({ product, variant }: ReviewItemProps) {
           disableMinus={
             qty === 0 || (product.minQty > 0 && getProductQty(product.id) <= product.minQty)
           }
-          disablePlus={!isVariantLine && !product.free && getProductQty(product.id) <= product.minQty}
+          disablePlus={
+            !isVariantLine &&
+            product.minQty > 0 &&
+            getProductQty(product.id) <= product.minQty
+          }
         />
       </div>
       <div className="flex flex-col items-end justify-center flex-shrink-0">
