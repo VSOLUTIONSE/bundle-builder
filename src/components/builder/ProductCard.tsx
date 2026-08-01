@@ -34,6 +34,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
           width={110}
           height={149}
           unoptimized
+          loading="eager"
           className="h-full w-full object-cover"
         />
       </div>
