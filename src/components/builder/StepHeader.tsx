@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-
 interface StepHeaderProps {
   stepNum: number;
   total: number;
@@ -34,13 +33,7 @@ export default function StepHeader({
       >
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center">
-            <Image
-              src={icon}
-              alt={title}
-              width={26}
-              height={26}
-              unoptimized
-            />
+            <Image src={icon} alt={title} width={26} height={26} unoptimized />
           </div>
           <span className="text-xl font-semibold text-foreground-strong">
             {title}

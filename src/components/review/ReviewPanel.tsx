@@ -90,6 +90,7 @@ export default function ReviewPanel() {
                 alt="Satisfaction Guaranteed Badge"
                 width={131}
                 height={131}
+                loading="eager"
                 className="object-cover"
               />
               <span className="flex-1 text-lg font-normal leading-[19.8px] text-foreground-primary tracking-[0.6px] whitespace-pre-line">
