@@ -53,6 +53,7 @@ export default function AccordionStep({
                 width={24}
                 height={24}
                 unoptimized
+                loading="eager"
               />
             </div>
             <h2 className="m-0 text-lg font-semibold leading-[100%] tab:text-3xl text-foreground-strong">
@@ -84,7 +85,7 @@ export default function AccordionStep({
 
         {isExpanded && (
           <div className="flex flex-col justify-center gap-3.75">
-            <div className="mt-3.75 flex flex-wrap justify-center gap-3.75 tab:flex-nowrap desktop:flex-wrap">
+            <div className="mt-3.75 flex flex-wrap justify-center gap-3.75 desktop:flex-wrap">
               {children}
             </div>
             {stepNum < total && onNext && nextLabel && (

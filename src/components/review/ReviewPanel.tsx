@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useBuilder } from "@/context/BuilderContext";
 import ReviewCategory from "./ReviewCategory";
 import ReviewItem from "./ReviewItem";
+import { formatPrice } from "@/lib/format";
 
 const categoryOrder = ["Cameras", "Sensors", "Accessories"];
 
@@ -38,6 +39,7 @@ export default function ReviewPanel() {
             width={78}
             height={78}
             unoptimized
+            loading="eager"
           />
           <div className="flex flex-col items-end justify-center gap-2">
             <span className="rounded-sm bg-primary px-2 py-1.25 text-xs font-medium leading-none text-white tracking-[-0.6px]">
@@ -186,6 +188,7 @@ export default function ReviewPanel() {
                     width={20}
                     height={24}
                     unoptimized
+                    loading="eager"
                   />
                   <span className="text-base font-bold leading-4 tracking-[-0.032px]">
                     <span className="text-black">Cam </span>
@@ -194,10 +197,10 @@ export default function ReviewPanel() {
                 </div>
                 <div className="flex flex-col items-end justify-center">
                   <span className="text-sm font-medium leading-4 text-tertiary-foreground tracking-[0.07px] line-through">
-                    ${plan.originalPrice.toFixed(2)}/{plan.period}
+                    {formatPrice(plan.originalPrice)}/{plan.period}
                   </span>
                   <span className="text-sm font-semibold leading-4 text-primary tracking-[0.07px]">
-                    ${plan.currentPrice.toFixed(2)}/{plan.period}
+                    {formatPrice(plan.currentPrice)}/{plan.period}
                   </span>
                 </div>
               </div>
@@ -212,6 +215,7 @@ export default function ReviewPanel() {
                     width={29}
                     height={29}
                     unoptimized
+                    loading="eager"
                   />
                 </div>
                 <span className="flex-1 text-sm font-medium leading-4 text-foreground-strong tracking-[0.07px]">
@@ -219,7 +223,7 @@ export default function ReviewPanel() {
                 </span>
                 <div className="flex flex-col items-end justify-center">
                   <span className="text-sm font-medium leading-4 text-tertiary-foreground tracking-[0.07px] line-through">
-                    ${shipping.originalPrice.toFixed(2)}
+                    {formatPrice(shipping.originalPrice)}
                   </span>
                   <span className="text-sm font-semibold leading-4 text-primary tracking-[0.07px]">
                     FREE

@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import type { ProductData } from '@/context/BuilderContext';
+import type { ProductData, Variant } from '@/types';
 import { useBuilder } from '@/context/BuilderContext';
 import QuantityStepper from '@/components/ui/QuantityStepper';
+import { formatPrice } from '@/lib/format';
 
 interface ReviewItemProps {
   product: ProductData;
-  variant?: { name: string; image: string };
+  variant?: Variant;
 }
 
 export default function ReviewItem({ product, variant }: ReviewItemProps) {
@@ -37,6 +38,7 @@ export default function ReviewItem({ product, variant }: ReviewItemProps) {
           width={41}
           height={41}
           unoptimized
+          loading="eager"
           className="flex-shrink-0 rounded-lg bg-white object-cover"
         />
         <span className="flex-1 text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:tracking-[0.07px] text-foreground-strong">
@@ -63,7 +65,7 @@ export default function ReviewItem({ product, variant }: ReviewItemProps) {
           <>
             {product.originalPrice > 0 && (
               <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-tertiary-foreground line-through">
-                ${(qty * product.originalPrice).toFixed(2)}
+                {formatPrice(qty * product.originalPrice)}
               </span>
             )}
             <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-primary">
@@ -74,11 +76,11 @@ export default function ReviewItem({ product, variant }: ReviewItemProps) {
           <>
             {totalOriginal > totalCurrent && (
               <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-tertiary-foreground line-through">
-                ${totalOriginal.toFixed(2)}
+                {formatPrice(totalOriginal)}
               </span>
             )}
             <span className="text-xs font-medium leading-4 tracking-[0.5%] tab:text-sm tab:font-semibold tab:tracking-[0.5%] text-right align-middle text-primary">
-              ${totalCurrent.toFixed(2)}
+              {formatPrice(totalCurrent)}
             </span>
           </>
         )}

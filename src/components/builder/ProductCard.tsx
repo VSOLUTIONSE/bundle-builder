@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import type { ProductData } from "@/context/BuilderContext";
+import type { ProductData } from "@/types";
 import { useBuilder } from "@/context/BuilderContext";
 import Badge from "@/components/ui/Badge";
 import VariantSelector from "@/components/ui/VariantSelector";
 import QuantityStepper from "@/components/ui/QuantityStepper";
+import { formatPrice } from "@/lib/format";
 
 export default function ProductCard({ product }: { product: ProductData }) {
   const { quantities, updateQty, getProductQty, colors, setColor } =
@@ -23,7 +24,7 @@ export default function ProductCard({ product }: { product: ProductData }) {
 
   return (
     <div
-      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center  overflow-hidden rounded-2xl  bg-white px-2.75 py-2.75 tab:flex-1 tab:min-w-0 desktop:w-[calc(50%-7.5px)]  desktop:flex-none border-2 ${
+      className={`relative flex w-full flex-row tab:flex-col desktop:flex-row items-center  overflow-hidden rounded-2xl  bg-white px-2.75 py-2.75 tab:w-[260px] tab:flex-none tab:min-w-0 desktop:w-[calc(50%-7.5px)]  desktop:flex-none border-2 ${
         totalQty > 0 ? "border-primary-border" : "border-transparent"
       }`}
     >
@@ -81,10 +82,10 @@ export default function ProductCard({ product }: { product: ProductData }) {
           />
           <div className="flex flex-1 flex-col items-end justify-center gap-0.75">
             <span className="font-normal text-base leading-4 text-strike tracking-[0.6px] line-through">
-              ${product.originalPrice.toFixed(2)}
+              {formatPrice(product.originalPrice)}
             </span>
             <span className="font-normal text-base leading-4 text-price tracking-[0.6px]">
-              {product.free ? "FREE" : `$${product.currentPrice.toFixed(2)}`}
+              {product.free ? "FREE" : formatPrice(product.currentPrice)}
             </span>
           </div>
         </div>

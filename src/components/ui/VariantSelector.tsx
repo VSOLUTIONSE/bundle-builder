@@ -1,9 +1,5 @@
 import Image from "next/image";
-
-interface Variant {
-  name: string;
-  image: string;
-}
+import type { Variant } from "@/types";
 
 interface VariantSelectorProps {
   variants: Variant[];
@@ -38,6 +34,7 @@ export default function VariantSelector({
               width={22}
               height={22}
               unoptimized
+              loading="eager"
               className="rounded-lg object-cover"
             />
             <span className="text-2xs font-medium text-foreground-primary tracking-[0.6px]">
