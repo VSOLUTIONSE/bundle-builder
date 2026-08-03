@@ -20,7 +20,7 @@ export default function QuantityStepper({
   const isBuilder = variant === "builder";
   const textSize = size === "sm" ? "text-xs" : "text-base";
 
-  const btnClass = `flex h-5 w-5 items-center justify-center rounded-md disabled:cursor-not-allowed disabled:opacity-50 ${
+  const btnClass = `flex h-5 w-5 cursor-pointer items-center justify-center rounded-md disabled:cursor-not-allowed disabled:opacity-50 ${
     isBuilder
       ? "bg-surface-soft disabled:border disabled:border-solid disabled:border-border-soft disabled:bg-white"
       : "bg-white disabled:border disabled:border-solid disabled:border-border disabled:bg-surface-muted"
