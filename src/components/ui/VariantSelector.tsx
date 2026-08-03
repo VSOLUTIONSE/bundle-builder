@@ -22,7 +22,7 @@ export default function VariantSelector({
           <button
             key={v.name}
             onClick={() => onSelect(v.name)}
-            className={`inline-flex h-6.5 items-center justify-center gap-1 rounded-xs border-[0.5px] px-1.25 py-0.25 ${
+            className={`inline-flex h-6.5 cursor-pointer items-center justify-center gap-1 rounded-xs border-[0.5px] px-1.25 py-0.25 ${
               isActive
                 ? 'border-accent bg-accent-soft'
                 : 'border-border-strong bg-white'
